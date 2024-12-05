@@ -1,0 +1,31 @@
+﻿@using Antemis.Models;
+@using Antemis.Database;
+@using Antemis.ComplexModels
+@model HotelComplexModel
+@{
+	Layout = "_UserLayout";
+}
+
+<link rel="stylesheet" href="~/css/standart-style.css" />
+<link rel="stylesheet" href="~/css/user-pages/selection-style.css"/>
+
+<div class="standart-container m-container">
+	@foreach (var hotel in Model.Hotels)
+	{
+		<a asp-route-hid="@hotel.HotelId" asp-controller="UserPage" asp-action="RoomSelection">
+			<div class="sel-cont-h">
+				<p><q>@hotel.HotelName</q></p>
+				<hr />
+				<div class="main-info-h">
+					<img class="img-h" src="~/images/hotel-rose-common.png" />
+					<div class="info-h">
+						<p>ID: @hotel.HotelId.ToString("D12")</p>
+						<p>Количество доступных комнат: @hotel.RoomsAmount</p>
+						<p>ФИО владельца: @hotel.OwnerFIO</p>
+						<p>ФИО директора: @hotel.DirectorFIO</p>
+					</div>
+				</div>
+			</div>
+		</a>
+	}
+</div>

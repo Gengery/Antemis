@@ -1,0 +1,47 @@
+﻿.m-container {
+    width: 870px;
+    height: 300px;
+    margin-top: 20px;
+}
+
+body {
+    background-image: url('/images/backgrounds/back_1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+}
+
+.img-box {
+    margin-left: 25px;
+    grid-area: 1/1/8/2;
+    height: 22vw;
+    align-self: self-start;
+}
+
+.id-box {
+    grid-area: 1/2/2/3;
+}
+
+.surname-box {
+    grid-area: 2/2/3/3;
+}
+
+.name-box {
+    grid-area: 3/2/4/3;
+}
+
+.patronimic-box {
+    grid-area: 4/2/5/3;
+}
+
+.inn-data-box {
+    grid-area: 5/2/6/3;
+}
+
+.birth-data-box {
+    grid-area: 6/2/7/3;
+}
+
+.gender-data-box {
+    grid-area: 7/2/8/3;
+}

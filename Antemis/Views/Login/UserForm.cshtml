@@ -1,0 +1,21 @@
+﻿@using Antemis.Models;
+
+@model UserModel
+@{
+	Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/login-pages/login-style.css"/>
+
+<form class="login-main-container" asp-controller="Login" asp-action="UserForm">
+	<span class="login-error" style="text-align: center; color: red;" asp-validation-for="Login"></span>
+	<span class="pass-error" style="text-align: center; color: red;" asp-validation-for="Password"></span>
+
+	<p class="login-text">Логин: </p>
+	<input class="login-input input-box" asp-for="Login" />
+
+	<p class="pass-text">Пароль: </p>
+	<input class="pass-input input-box" asp-for="Password" />
+
+	<button class="submit" type="submit">Войти</button>
+</form>

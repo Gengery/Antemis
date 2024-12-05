@@ -1,0 +1,31 @@
+﻿@using Antemis.Models;
+@model ReservationModel
+@{
+	Layout = "_UserLayout";
+}
+
+
+<link rel="stylesheet" href="~/css/standart-style.css" />
+<link rel="stylesheet" href="~/css/hotel-pages/add-job-style.css" />
+
+<form class="m-container standart-container" asp-controller="UserPage" asp-action="MakeReservation">
+
+	<input style="display: none;" asp-for="HotelID" />
+	<input style="display: none;" asp-for="RoomNumber" />
+	<input style="display: none;" asp-for="INN"/>
+
+	<div>
+		<label asp-for="ArrivalDate">Дата прибытия: </label>
+		<input type="date" style="margin-bottom: 20px;" class="input-box" asp-for="ArrivalDate" />
+		<span class="error" asp-validation-for="ArrivalDate"></span>
+	</div>
+
+	<div>
+		<label asp-for="LeavingDate">Дата отбытия: </label>
+		<input type="date" style="margin-bottom: 20px;" class="input-box" asp-for="LeavingDate" />
+		<span class="error" asp-validation-for="LeavingDate"></span>
+	</div>
+
+	<button style="align-self: center; margin-top: 20px; padding: 2px; width: 140px;" type="submit">Забронировать</button>
+
+</form>

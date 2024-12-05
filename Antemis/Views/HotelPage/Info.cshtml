@@ -1,0 +1,18 @@
+﻿@using Antemis.Models;
+
+@model HotelModel
+@{
+	Layout = "_HotelLayout";
+}
+
+<link rel="stylesheet" href="~/css/standart-style.css" />
+<link rel="stylesheet" href="~/css/hotel-pages/hotel-page-style.css" />
+
+<div class="standart-container m-container">
+	<img class="img-box" src="~/images/hotel-rose-common.png" />
+	<p class="id-box">ID: @Model?.ID</p>
+	<p class="name-box">Название: "@Model?.HotelNam"</p>
+	<p class="inn-box">ИНН: @Model?.HotelINN</p>
+	<p class="dir-box">Директор: @Model?.DSurname @Model?.DName @Model?.DPatronimic</p>
+	<p class="own-box">Владелец: @Model?.OSurname @Model?.OName @Model?.OPatronimic</p>
+</div>

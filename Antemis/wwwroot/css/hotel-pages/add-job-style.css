@@ -1,0 +1,36 @@
+﻿.m-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 400px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    z-index: 10;
+}
+
+body {
+    background-image: url('/images/backgrounds/back_4.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+}
+
+.image-selector {
+    margin-top: 40px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 20;
+}
+
+.image-line {
+    display: flex;
+}
+
+.image-line img {
+    height: 75px;
+}
+
+.img {
+    border: 1px dotted transparent;
+}

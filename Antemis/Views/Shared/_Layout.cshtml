@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Антемис</title>
+    <link rel="stylesheet" href="~/css/layout-style.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="nav-main-container">
+        <div class="nav-container">
+            <a class="nav-button button1" asp-controller="Home" asp-action="Index"><img class="logo-button" src="~/images/LOGO-ANTEMIS.png" /></a>
+            <a class="nav-button button2" asp-controller="Login" asp-action="Path">Вход</a>
+            <a class="nav-button button3" asp-controller="Register" asp-action="Path">Регистрация</a>
+        </div>
+    </header>
+
+    <div>
+        <div style="height: 7vw;"></div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

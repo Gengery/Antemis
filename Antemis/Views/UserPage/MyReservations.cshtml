@@ -1,0 +1,22 @@
+﻿@using Antemis.Models;
+@model List<UResModel>;
+@{
+	Layout = "_UserLayout";
+}
+
+<link rel="stylesheet" href="~/css/standart-style.css" />
+<link rel="stylesheet" href="~/css/reservation-style.css" />
+
+<div class="m-container standart-container">
+	@foreach (var res in Model)
+	{
+		<div class="res-box">
+			<p style="text-align: center">Отель <q>@res.HotelName</q> N<q>@res.RoomNumber</q></p>
+			<p style="text-align: center">Стоимость @res.Price руб.</p>
+			<hr />
+			<p>Время пребывания</p>
+			<p>С @res.ADate</p>
+			<p>До @res.LDate</p>
+		</div>
+	}
+</div>

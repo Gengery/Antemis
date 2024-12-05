@@ -1,0 +1,27 @@
+﻿@using Antemis.Models;
+
+@model WorkTypeModel
+@{
+	Layout = "_HotelLayout";
+}
+
+<link rel="stylesheet" href="~/css/standart-style.css" />
+<link rel="stylesheet" href="~/css/hotel-pages/add-job-style.css" />
+
+<form class="m-container standart-container" asp-controller="HotelPage" asp-action="AddJob">
+
+	<div>
+		<label asp-for="Id">ID: </label>
+		<input style="margin-bottom: 20px;" class="input-box" asp-for="Id" />
+		<span class="error" asp-validation-for="Id"></span>
+	</div>
+
+	<div>
+		<label asp-for="Name">Название должности: </label>
+		<input style="margin-bottom: 20px;" class="input-box" asp-for="Name" />
+		<span class="error" asp-validation-for="Name"></span>
+	</div>
+	
+	<button style="align-self: center; margin-top: 20px; padding: 2px; width: 100px;" type="submit">Добавить должность</button>
+
+</form>

@@ -1,0 +1,23 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+}
+
+.welcome-section {
+    width: 100vw;
+    text-align: center;
+    background-image: url(/images/hello-image-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 15vh;
+    padding-top: 9vh;
+    background-position-y: 75%;
+}
+
+.welcome-section p {
+    color: #faf5ec;
+    margin: 20px;
+}

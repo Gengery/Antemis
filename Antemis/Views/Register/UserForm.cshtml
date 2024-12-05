@@ -1,0 +1,89 @@
+﻿@using Antemis.Models
+
+@model UserModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+    <link rel="stylesheet" href="~/css/user-registration-style.css" />
+</head>
+<body>
+    <form class="registration-form" asp-controller="Register" asp-action="UserForm">
+            <p class="first-box-text">Фамилия:</p>
+            <input class="first-box-input input-box" asp-for="Surname" value="@Model?.Surname" />
+            <span class="first-box-error error" asp-validation-for="Surname"></span>
+
+            <p class="second-box-text">Имя:</p>
+            <input class="second-box-input input-box" asp-for="Name" value="@Model?.Name" />
+            <span class="second-box-error error" asp-validation-for="Name"></span>
+
+            <p class="third-box-text">Отчество:</p>
+            <input class="third-box-input input-box" asp-for="Patronimic" value="@Model?.Patronimic" />
+            <span class="third-box-error error" asp-validation-for="Patronimic"></span>
+
+            <p class="gender-box-text">Пол:</p>
+            <select class="gender-box-input input-box" asp-for="Gender" value="@Model?.Gender">
+                <option value="m">Мужской</option>
+                <option value="f">Женский</option>
+            </select>
+            <span class="gender-box-error error" asp-validation-for="Gender"></span>
+
+            <p class="birth-box-text">Дата рождения:</p>
+            <input class="birth-box-input input-box" type="date" asp-for="BirthDate" value='@Model?.BirthDate.Value.ToString("O")' />
+            <span class="birth-box-error error" asp-validation-for="BirthDate"></span>
+
+        <div class="empty-box"></div>
+
+        <p class="login-box-text">Логин:</p>
+        <input class="login-box-input input-box" asp-for="Login" />
+        <span class="login-box-error error" asp-validation-for="Login"></span>
+
+        <p class="password-box-text">Пароль:</p>
+        <input class="password-box-input input-box" type="password" asp-for="Password" />
+        <span class="password-box-error error" asp-validation-for="Password"></span>
+
+        <p class="icon-selection-box-text">Выберите аватарку:</p>
+        <div class="icon-selection-box-input">
+            <div class="image-selector">
+                <img class="img1 img" src="~/images/usericons/img1.png" alt="Alternate Text" />
+                <img class="img2 img" src="~/images/usericons/img2.png" alt="Alternate Text" />
+                <img class="img3 img" src="~/images/usericons/img3.png" alt="Alternate Text" />
+                <img class="img4 img" src="~/images/usericons/img4.png" alt="Alternate Text" />
+                <img class="img5 img" src="~/images/usericons/img5.png" alt="Alternate Text" />
+                <img class="img6 img" src="~/images/usericons/img6.png" alt="Alternate Text" />
+
+                <img class="img7 img" src="~/images/usericons/img7.png" alt="Alternate Text" />
+                <img class="img8 img" src="~/images/usericons/img8.png" alt="Alternate Text" />
+                <img class="img9 img" src="~/images/usericons/img9.png" alt="Alternate Text" />
+                <img class="img10 img" src="~/images/usericons/img10.png" alt="Alternate Text" />
+                <img class="img11 img" src="~/images/usericons/img11.png" alt="Alternate Text" />
+                <img class="img12 img" src="~/images/usericons/img12.png" alt="Alternate Text" />
+            </div>
+        </div>
+        <input id="imgField" style="display: none;" asp-for="Img" value="img1.png"/>
+        <input style="display: none" asp-for="INN" value="@Model.INN"/>
+
+
+        <button class="submit-box" type="submit">Зарегистрироваться</button>
+    </form>
+    <script>
+        let images = document.getElementsByClassName('img');
+        let last = images[0];
+        let field = document.getElementById('imgField');
+        for (let i = 0; i < images.length; i++) {
+            images[i].onclick = () => {
+                last.style.borderColor = 'transparent';
+                images[i].style.borderColor = 'black';
+                field.value = images[i].classList[0];
+                last = images[i];
+            }
+        }
+    </script>
+</body>
+</html>

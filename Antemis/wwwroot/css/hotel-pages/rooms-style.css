@@ -1,0 +1,85 @@
+﻿body {
+    background-image: url('/images/backgrounds/back_5.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+}
+
+.room-box {
+    height: 200px;
+    width: 540px;
+    border: 2px dashed black;
+    background-image: linear-gradient( 45deg, #FC9, #ffffff, #ffffff, #ffffff, #FC9);
+    margin: 2px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.info-box {
+    height: 135px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.img-room-box {
+    margin-left: 10px;
+    height: 120px;
+    border: dashed black 2px;
+    border-radius: 5px;
+}
+
+.real-info-box {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ui-box {
+    display: grid;
+}
+
+.ui-remove {
+    grid-area: 1/1/2/2;
+    height: 30px;
+}
+
+.ui-update {
+    grid-area: 2/1/3/2;
+    height: 30px;
+}
+
+.ui-lock {
+    grid-area: 3/1/4/2;
+    height: 35px;
+}
+
+.ui-elem {
+    height: 35px;
+}
+
+.desc-box {
+    height: 60px;
+    width: 98%;
+    border: dashed black 2px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.info {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.room-hover:hover {
+    background-image: linear-gradient( 75deg, #FC9, #FC9, #ffffff, #ffffff, #ffffff, #FC9, #FC9);
+}
+
+room-hover * {
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}

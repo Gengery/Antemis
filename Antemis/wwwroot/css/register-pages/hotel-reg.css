@@ -1,0 +1,226 @@
+﻿* {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+    font-family: Verdana;
+}
+
+body {
+    background-image: url("/images/register-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+}
+
+.registration-form {
+    display: grid;
+    position: relative;
+    left: 50vw;
+    transform: translate(-50%, 0);
+    min-width: 600px;
+    width: fit-content;
+    margin-top: 100px;
+    padding: 30px;
+    border: 2px dashed black;
+    background-image: linear-gradient( 45deg, #FC9, #ffffff, #ffffff, #ffffff, #FC9);
+}
+
+.input-box {
+    border: none;
+    border-bottom: 2px solid black;
+    background-color: transparent;
+    color: black;
+    outline: none;
+    text-align: center;
+    padding: 3px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.h-inn-text {
+    grid-area: 1/1/2/4;
+}
+.h-inn-input {
+    grid-area: 1/4/2/6;
+}
+.h-inn-error {
+    grid-area: 1/6/2/7;
+}
+
+
+.h-name-text {
+    grid-area: 2/1/3/4;
+}
+.h-name-input {
+    grid-area: 2/4/3/6;
+}
+.h-name-error {
+    grid-area: 2/6/3/7;
+}
+
+
+.h-pass-text {
+    grid-area: 3/1/4/4;
+}
+.h-pass-input {
+    grid-area: 3/4/4/6;
+}
+.h-pass-error {
+    grid-area: 3/6/4/7;
+}
+
+
+.h-dir-text {
+    grid-area: 4/1/5/4;
+}
+
+
+.h-own-text {
+    grid-area: 4/4/5/7;
+}
+
+
+.d-surname-text {
+    grid-area: 5/1/6/2;
+}
+.d-surname-input {
+    grid-area: 5/2/6/3;
+}
+.d-surname-error {
+    grid-area: 5/3/6/4;
+}
+
+
+.d-name-text {
+    grid-area: 6/1/7/2;
+}
+.d-name-input {
+    grid-area: 6/2/7/3;
+}
+.d-name-error {
+    grid-area: 6/3/7/4;
+}
+
+
+.d-pat-text {
+    grid-area: 7/1/8/2;
+}
+.d-pat-input {
+    grid-area: 7/2/8/3;
+}
+.d-pat-error {
+    grid-area: 7/3/8/4;
+}
+
+
+.d-inn-text {
+    grid-area: 8/1/9/2;
+}
+.d-inn-input {
+    grid-area: 8/2/9/3;
+}
+.d-inn-error {
+    grid-area: 8/3/9/4;
+}
+
+
+.d-birth-text {
+    grid-area: 9/1/10/2;
+}
+.d-birth-input {
+    grid-area: 9/2/10/3;
+}
+.d-birth-error {
+    grid-area: 9/3/10/4;
+}
+
+
+.d-gen-text {
+    grid-area: 10/1/11/2;
+}
+.d-gen-input {
+    grid-area: 10/2/11/3;
+}
+.d-gen-error {
+    grid-area: 10/3/11/4;
+}
+
+
+.o-surname-text {
+    grid-area: 5/4/6/5;
+}
+.o-surname-input {
+    grid-area: 5/5/6/6;
+}
+.o-surname-error {
+    grid-area: 5/6/6/7;
+}
+
+
+.o-name-text {
+    grid-area: 6/4/7/5;
+}
+.o-name-input {
+    grid-area: 6/5/7/6;
+}
+.o-name-error {
+    grid-area: 6/6/7/7;
+}
+
+
+.o-pat-text {
+    grid-area: 7/4/8/5;
+}
+.o-pat-input {
+    grid-area: 7/5/8/6;
+}
+.o-pat-error {
+    grid-area: 7/6/8/7;
+}
+
+
+.o-inn-text {
+    grid-area: 8/4/9/5;
+}
+.o-inn-input {
+    grid-area: 8/5/9/6;
+}
+.o-inn-error {
+    grid-area: 8/6/9/7;
+}
+
+
+.o-birth-text {
+    grid-area: 9/4/10/5;
+}
+.o-birth-input {
+    grid-area: 9/5/10/6;
+}
+.o-birth-error {
+    grid-area: 9/6/10/7;
+}
+
+
+.o-gen-text {
+    grid-area: 10/4/11/5;
+}
+.o-gen-input {
+    grid-area: 10/5/11/6;
+}
+.o-gen-error {
+    grid-area: 10/6/11/7;
+}
+
+.submit-box {
+    width: 200px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 10px;
+    grid-area: 11/1/12/7;
+}

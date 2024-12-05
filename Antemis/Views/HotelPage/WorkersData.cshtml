@@ -1,0 +1,69 @@
+﻿@using Antemis.Models;
+@using Antemis.Database;
+@using Antemis.ComplexModels
+@model WorkersListComplexModel
+@{
+	Layout = "_HotelLayout";
+}
+
+<link rel="stylesheet" href="~/css/standart-style.css" />
+<link rel="stylesheet" href="~/css/hotel-pages/workers-style.css" />
+
+<div class="add-worker-box">
+	<a style="text-decoration: none;" asp-controller="HotelPage" asp-action="AddWorker">
+		<img class="ui-plus" src="~/images/ui/add.png" />
+		<span class="ui-plus-text">Сотрудник</span>
+	</a>
+</div>
+
+<div class="add-type-box">
+	<a style="text-decoration: none;" asp-controller="HotelPage" asp-action="AddJob">
+		<img class="ui-plus" src="~/images/ui/add.png" />
+		<span class="ui-plus-text">Должность</span>
+	</a>
+</div>
+
+<form class="fil-sort-cont" asp-controller="HotelPage" asp-action="WorkersData">
+	<p style="text-align: center;">Фильтр</p>
+	<hr />
+	<select style="margin: 10px;" asp-for="Sort.JobFilter">
+		<option value="None">Без фильтра</option>
+		@foreach(var m in Model.Works)
+		{
+			<option value="@m.Workname">@m.Workname</option>
+		}
+	</select>
+	<p style="text-align: center;">Сортировка</p>
+	<hr />
+	<select style="margin: 10px;" asp-for="Sort.SortName">
+		<option value="None">Без сортировки</option>
+		<option value="fio">По ФИО</option>
+		<option value="inn">По ИНН</option>
+		<option value="job">По должности</option>
+	</select>
+	<select style="margin: 10px;" asp-for="Sort.SortOrder">
+		<option value="u">По возрастанию</option>
+		<option value="d">По убыванию</option>
+	</select>
+	<button style="margin: 20px;" type="submit">Применить</button>
+</form>
+
+<div class="standart-container m-container">
+	@for(int i = 0; i < Model.Workers?.Count(); i++)
+	{
+		<div class="worker-box">
+			<div style ="display: flex; justify-content: left;">
+				<img class="img-box" src="~/images/usericons/@(Model.Workers?[i].Img).png" />
+				<div class="inf-box">
+					<p>ФИО: @Model.Workers?[i].Surname @Model.Workers?[i].Name @Model.Workers?[i].Patronimic</p>
+					<p>ИНН: @Model.Workers?[i].INN</p>
+					<p>Должность: @Model.Workers?[i].JobName</p>
+				</div>
+			</div>
+			<div class="ui-box">
+				<a class="update-box" asp-controller="HotelPage" asp-action="UpdateWorker" asp-route-inn="@Model.Workers[i].INN"><img class="ui-img" src="~/images/ui/update.png" /></a>
+				<a class="remove-box" asp-controller="HotelPage" asp-action="RemoveWorker" asp-route-inn="@Model.Workers[i].INN"><img class="ui-img" src="~/images/ui/remove.png" /></a>
+			</div>
+		</div>
+	}
+</div>

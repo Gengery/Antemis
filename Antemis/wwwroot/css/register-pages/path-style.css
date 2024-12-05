@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("/images/register-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+}
+
+.path-main-container {
+    display: grid;
+    width: 70%;
+    margin: auto;
+    height: 70vh;
+    margin-top: 60px;
+    margin-bottom: 100px;
+}
+
+.reg {
+    width: 75%;
+    height: 100%;
+    margin: auto;
+    padding-top: 40px;
+}
+
+.hotel {
+    grid-area: 1/1/2/2;
+    background-image: url("/images/register/chair.png"), linear-gradient( 45deg, #FC9, #ffffff, #ffffff, #ffffff, #FC9);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: bottom;
+    text-decoration: none;
+    border: dashed 1px #a78665;
+}
+
+.user {
+    grid-area: 1/2/2/3;
+    background-image: url("/images/register/users.png"), linear-gradient( 45deg, #FC9, #ffffff, #ffffff, #ffffff, #FC9);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: bottom;
+    text-decoration: none;
+    border: dashed 1px #a78665;
+}
+
+.reg p {
+    text-align: center;
+    color: black;
+    font-size: 20px;
+}
+
+.hotel:hover {
+    background-image: url("/images/register/chair.png"), linear-gradient( 75deg, #FC9, #ffffff, #ffffff, #ffffff, #FC9);
+    color: #18155b;
+    transform: scale(105%);
+}
+
+.user:hover {
+    background-image: url("/images/register/users.png"), linear-gradient( 75deg, #FC9, #ffffff, #ffffff, #ffffff, #FC9);
+    color: #18155b;
+    transform: scale(105%);
+}

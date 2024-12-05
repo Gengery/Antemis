@@ -1,0 +1,38 @@
+﻿.m-container {
+    width: 870px;
+    height: 300px;
+    margin-top: 20px;
+}
+
+body {
+    background-image: url('/images/backgrounds/back_2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+}
+
+.img-box {
+    margin-left: 25px;
+    grid-area: 1/1/6/2;
+    height: 300px;
+}
+
+.id-box {
+    grid-area: 1/2/2/3;
+}
+
+.name-box {
+    grid-area: 2/2/3/3;
+}
+
+.inn-box {
+    grid-area: 3/2/4/3;
+}
+
+.dir-box {
+    grid-area: 4/2/5/3;
+}
+
+.own-data-box {
+    grid-area: 5/2/6/3;
+}

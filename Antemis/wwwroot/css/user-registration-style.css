@@ -1,0 +1,217 @@
+﻿* {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+    font-family: Verdana;
+}
+
+body {
+    background-image: url('/images/register-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+}
+
+.registration-form {
+    display: grid;
+    position: relative;
+    left: 50vw;
+    transform: translate(-50%, 0);
+    min-width: 600px;
+    width: fit-content;
+    margin-top: 100px;
+    padding: 30px;
+    border: 2px dashed black;
+    background-image: linear-gradient( 45deg, #FC9, #ffffff, #ffffff, #ffffff, #FC9);
+}
+
+.input-box {
+    border: none;
+    border-bottom: 2px solid black;
+    background-color: transparent;
+    color: black;
+    outline: none;
+    text-align: center;
+    padding: 3px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-left: 20px;
+}
+
+.first-box-text {
+    grid-area: 1/1/2/3;
+}
+.first-box-input {
+    grid-area: 1/2/2/3;
+}
+.first-box-error {
+    grid-area: 1/3/2/4;
+}
+
+
+.second-box-text {
+    grid-area: 2/1/3/2;
+}
+.second-box-input {
+    grid-area: 2/2/3/3;
+}
+.second-box-error {
+    grid-area: 2/3/3/4;
+}
+
+
+.third-box-text {
+    grid-area: 3/1/4/2;
+}
+.third-box-input {
+    grid-area: 3/2/4/3;
+}
+.third-box-error {
+    grid-area: 3/3/4/4;
+}
+
+
+.fourth-box-text {
+    grid-area: 4/1/5/2;
+}
+.fourth-box-input {
+    grid-area: 4/2/5/3;
+}
+.fourth-box-error {
+    grid-area: 4/3/5/4;
+}
+
+
+.gender-box-text {
+    grid-area: 5/1/6/2;
+}
+.gender-box-input {
+    grid-area: 5/2/6/3;
+}
+.gender-box-error {
+    grid-area: 5/3/6/4;
+}
+
+
+.birth-box-text {
+    grid-area: 6/1/7/2;
+}
+.birth-box-input {
+    grid-area: 6/2/7/3;
+}
+.birth-box-error {
+    grid-area: 6/3/7/4;
+}
+
+
+.empty-box {
+    grid-area: 7/1/8/6;
+}
+
+
+.login-box-text {
+    grid-area: 8/1/9/2;
+}
+.login-box-input {
+    grid-area: 8/2/9/3;
+}
+.login-box-error {
+    grid-area: 8/3/9/4;
+}
+
+
+.password-box-text {
+    grid-area: 9/1/10/3;
+}
+.password-box-input {
+    grid-area: 9/2/10/3;
+}
+.password-box-error {
+    grid-area: 9/3/10/4;
+}
+
+
+.icon-selection-box-text {
+    grid-area: 10/1/11/3;
+}
+.icon-selection-box-input {
+    grid-area: 11/1/12/3;
+}
+.icon-selection-box-error {
+    grid-area: 11/3/12/4;
+}
+
+
+.submit-box {
+    grid-area: 12/1/13/6;
+    margin: auto;
+    margin-top: 10px;
+    padding: 3px;
+    width: 200px;
+}
+
+.image-selector {
+    display: grid;
+}
+
+.img {
+    border: 1px dotted transparent;
+    width: 50px;
+}
+
+.img:hover {
+    border: 1px dotted black;
+    background-color: rgb(226, 122, 18, 0.25);
+}
+
+.img1 {
+    grid-area: 1/1/2/2;
+}
+
+.img2 {
+    grid-area: 1/2/2/3;
+}
+
+.img3 {
+    grid-area: 1/3/2/4;
+}
+
+.img4 {
+    grid-area: 2/1/3/2;
+}
+
+.img5 {
+    grid-area: 2/2/3/3;
+}
+
+.img6 {
+    grid-area: 2/3/3/4;
+}
+
+.img7 {
+    grid-area: 1/4/2/5;
+}
+
+.img8 {
+    grid-area: 1/5/2/6;
+}
+
+.img9 {
+    grid-area: 1/6/2/7;
+}
+
+.img10 {
+    grid-area: 2/4/3/5;
+}
+
+.img11 {
+    grid-area: 2/5/3/6;
+}
+
+.img12 {
+    grid-area: 2/6/3/7;
+}

@@ -1,0 +1,68 @@
+﻿@using Antemis.Models;
+@using Antemis.Database;
+@using Antemis.ComplexModels
+@model RoomsComplexModel
+@{
+	Layout = "_UserLayout";
+}
+
+<link rel="stylesheet" href="~/css/standart-style.css" />
+<link rel="stylesheet" href="~/css/hotel-pages/workers-style.css" />
+<link rel="stylesheet" href="~/css/hotel-pages/rooms-style.css" />
+
+<form class="fil-sort-cont" style="height: 450px;" method="post" asp-route-hid="@Model.Hid" asp-controller="UserPage" asp-action="RoomSelection">
+	<p style="text-align: center;">Фильтр</p>
+	<hr />
+	<select style="margin: 10px;" asp-for="Sort.RoomsAmountFilter">
+		<option value="-1">Сколько угодно комнат</option>
+		<option value="1">1 комната</option>
+		<option value="2">2 комнаты</option>
+		<option value="3">3 комнаты</option>
+		<option value="4">4 комнаты</option>
+		<option value="5">5 комнат</option>
+		<option value="6">6 комнат</option>
+		<option value="7">7 комнат</option>
+		<option value="8">8 комнат</option>
+		<option value="9">9 комнат</option>
+		<option value="10">10 комнат</option>
+	</select>
+	<label asp-for="Sort.LowerPriceFilter">От:</label>
+	<input style="margin: 10px;" asp-for="Sort.LowerPriceFilter" />
+	<label asp-for="Sort.UpperPriceFilter">До:</label>
+	<input style="margin: 10px;" asp-for="Sort.UpperPriceFilter" />
+	<p style="text-align: center;">Сортировка</p>
+	<hr />
+	<select style="margin: 10px;" asp-for="Sort.Case">
+		<option value="none">Не выбрано</option>
+		<option value="amo">По количеству комнат</option>
+		<option value="price">По стоимости</option>
+		<option value="num">По номеру</option>
+	</select>
+	<select style="margin: 10px;" asp-for="Sort.IsDescending">
+		<option value="false">По возрастанию</option>
+		<option value="true">По убыванию</option>
+	</select>
+	<label asp-for="Sort.ADate">Необходимые даты:</label>
+	<input type="date" style="margin: 10px;" asp-for="Sort.ADate" />
+	<input type="date" style="margin: 10px;" asp-for="Sort.LDate" />
+	<button style="margin: 10px;" type="submit">Применить</button>
+</form>
+
+<div class="standart-container m-container">
+	@foreach (var room in Model.Rooms)
+	{
+		<a style="text-decoration: none;" asp-route-hid="@room.Hotelid" asp-route-num="@room.Roomnumber" asp-controller="UserPage" asp-action="MakeReservation">
+			<div class="room-box room-hover">
+				<div class="info-box">
+					<img class="img-room-box" src="~/images/room_icons/@(room.Imagename).jpg" />
+					<div class="real-info-box">
+						<p style="color: black" class="info">Номер: @room.Roomnumber</p>
+						<p style="color: black" class="info">Количество комнат: @room.Placesamount</p>
+						<p style="color: black" class="info">Дневная плата: @room.Priceforday руб.</p>
+					</div>
+				</div>
+				<textarea class="desc-box" readonly>@room.Roomdescryprion</textarea>
+			</div>
+		</a>
+	}
+</div>

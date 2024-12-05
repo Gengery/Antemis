@@ -1,0 +1,90 @@
+﻿@using Antemis.Models;
+@model HotelModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+    <link rel="stylesheet" href="~/css/register-pages/hotel-reg.css" />
+</head>
+<body>
+    <form class="registration-form" asp-controller="Register" asp-action="HotelForm">
+        <p class="h-inn-text">ИНН отеля: </p>
+        <input class="h-inn-input input-box" asp-for="HotelINN" />
+        <span class="h-inn-error error" asp-validation-for="HotelINN"></span>
+
+        <p class="h-name-text">Название отеля: </p>
+        <input class="h-name-input input-box" asp-for="HotelNam" />
+        <span class="h-name-error error" asp-validation-for="HotelNam"></span>
+
+        <p class="h-pass-text">Придумайте пароль: </p>
+        <input class="h-pass-input input-box" asp-for="Password" />
+        <span class="h-pass-error error" asp-validation-for="Password"></span>
+
+        <p class="h-dir-text">Данные директора</p>
+        <p class="h-own-text">Данные владельца</p>
+
+        <p class="d-surname-text">Фамилия: </p>
+        <input class="d-surname-input input-box" asp-for="DSurname" />
+        <span class="d-surname-error error" asp-validation-for="DSurname"></span>
+
+        <p class="d-name-text">Имя: </p>
+        <input class="d-name-input input-box" asp-for="DName" />
+        <span class="d-name-error error" asp-validation-for="DName"></span>
+
+        <p class="d-pat-text">Отчество: </p>
+        <input class="d-pat-input input-box" asp-for="DPatronimic" />
+        <span class="d-pat-error error" asp-validation-for="DPatronimic"></span>
+
+        <p class="d-gen-text">Пол: </p>
+        <select class ="d-gen-input input-box" asp-for="DGender">
+            <option value="m">Мужской</option>
+            <option value="f">Женский</option>
+        </select>
+        <span class="d-gen-error error" asp-validation-for="DGender"></span>
+
+        <p class="d-birth-text">Дата рождения: </p>
+        <input type="date" class="d-birth-input input-box" asp-for="DBirthDate" value="2001-01-01" />
+        <span class="d-birth-error error" asp-validation-for="DBirthDate"></span>
+
+
+        <p class="o-surname-text">Фамилия: </p>
+        <input class="o-surname-input input-box" asp-for="OSurname" />
+        <span class="o-surname-error error" asp-validation-for="OSurname"></span>
+
+        <p class="o-name-text">Имя: </p>
+        <input class="o-name-input input-box" asp-for="OName" />
+        <span class="o-name-error error" asp-validation-for="OName"></span>
+
+        <p class="o-pat-text">Отчество: </p>
+        <input class="o-pat-input input-box" asp-for="OPatronimic" />
+        <span class="o-pat-error error" asp-validation-for="OPatronimic"></span>
+
+        <p class="o-gen-text">Пол: </p>
+        <select class="o-gen-input input-box" asp-for="OGender">
+            <option value="m">Мужской</option>
+            <option value="f">Женский</option>
+        </select>
+        <span class="o-gen-error error" asp-validation-for="OGender"></span>
+
+        <p class="o-birth-text">Дата рождения: </p>
+        <input type="date" class="o-birth-input input-box" asp-for="OBirthDate" value="2001-01-01" />
+        <span class="o-birth-error error" asp-validation-for="OBirthDate"></span>
+
+        <p class="d-inn-text">ИНН: </p>
+        <input class="d-inn-input input-box" asp-for="DirectorINN" />
+        <span class="d-inn-error error" asp-validation-for="DirectorINN"></span>
+
+        <p class="o-inn-text">ИНН: </p>
+        <input class="o-inn-input input-box" asp-for="OwnerINN" />
+        <span class="o-inn-error error" asp-validation-for="OwnerINN"></span>
+
+        <button class="submit-box" type="submit">Зарегистрироваться</button>
+    </form>
+</body>
+</html>

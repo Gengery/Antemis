@@ -1,0 +1,16 @@
+﻿@using Antemis.Models;
+
+@model UserModel
+@{
+	Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/user-registration-style.css" />
+<link rel="stylesheet" href="~/css/register-pages/inn-style.css" />
+
+<form class="inn-form" asp-controller="Register" asp-action="InnForm">
+	<p class="inn-box-text">Введите ваш ИНН: </p>
+	<input class="input-box inn-box-input" asp-for="INN"/>
+	<button class="inn-submit" type="submit">Отправить</button>
+	<span style="margin-left: 40px;text-align: center; color: red;" asp-validation-for="INN"></span>
+</form>

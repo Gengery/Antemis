@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Арматура</title>
+    <link rel="stylesheet" href="~/css/layout-style.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="nav-main-container">
+        <div class="nav-container">
+            <a class="nav-button" asp-controller="HotelPage" asp-action="Info">Данные отеля</a>
+            <a class="nav-button" asp-controller="HotelPage" asp-action="Index"><img class="logo-button" src="~/images/LOGO-ANTEMIS.png" /></a>
+            <a class="nav-button" asp-controller="HotelPage" asp-action="WorkersData">Данные о работниках</a>
+            <a class="nav-button" asp-controller="HotelPage" asp-action="RoomsData">Данные о <br />комнатах</></a>
+            <a class="nav-button" asp-controller="HotelPage" asp-action="MyReservations">Данные о бронированиях</a>
+            <a class="nav-button" asp-controller="Home" asp-action="Index">Выход</a>
+        </div>
+    </header>
+
+    <div>
+        <div style="height: 7vw;"></div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

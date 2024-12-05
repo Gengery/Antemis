@@ -1,0 +1,76 @@
+﻿@using Antemis.Models;
+@using Antemis.Repositories;
+
+@model RoomModel
+@{
+	Layout = "_HotelLayout";
+}
+
+<link rel="stylesheet" href="~/css/standart-style.css" />
+<link rel="stylesheet" href="~/css/hotel-pages/add-job-style.css" />
+
+
+<form class="m-container standart-container" style="width: 600px;" asp-controller="HotelPage" asp-action="UpdateRoom">
+
+	<div style="display: flex; flex-direction: column; margin-left: 60px;">
+		<div style="display: none;">
+			<label asp-for="Number">Номер: </label>
+			<input style="margin-bottom: 10px;" class="input-box" asp-for="Number" />
+			<span class="error" asp-validation-for="Number"></span>
+		</div>
+
+		<div>
+			<label asp-for="PlAmount">Количество комнат: </label>
+			<input style="margin-bottom: 10px;" class="input-box" asp-for="PlAmount" />
+			<span class="error" asp-validation-for="PlAmount"></span>
+		</div>
+
+		<div>
+			<label asp-for="DaylyPrice">Дневная стоимость: </label>
+			<input style="margin-bottom: 10px;" class="input-box" asp-for="DaylyPrice" />
+			<span class="error" asp-validation-for="DaylyPrice"></span>
+		</div>
+
+		<label asp-for="Descryption">Добавить описание: </label>
+		<textarea style="margin-bottom: 10px;" class="input-box" asp-for="Descryption"></textarea>
+		<span class="error" asp-validation-for="Descryption"></span>
+	</div>
+	<p style="margin-left: 60px;" class="">Выберите изображение:</p>
+	<div class="image-selector">
+		<div class="image-line">
+			<img class="img1 img" src="~/images/room_icons/img1.jpg" alt="Alternate Text" />
+			<img class="img2 img" src="~/images/room_icons/img2.jpg" alt="Alternate Text" />
+			<img class="img3 img" src="~/images/room_icons/img3.jpg" alt="Alternate Text" />
+			<img class="img7 img" src="~/images/room_icons/img7.jpg" alt="Alternate Text" />
+			<img class="img8 img" src="~/images/room_icons/img8.jpg" alt="Alternate Text" />
+			<img class="img9 img" src="~/images/room_icons/img9.jpg" alt="Alternate Text" />
+		</div>
+
+		<div class="image-line">
+			<img class="img4 img" src="~/images/room_icons/img4.jpg" alt="Alternate Text" />
+			<img class="img5 img" src="~/images/room_icons/img5.jpg" alt="Alternate Text" />
+			<img class="img6 img" src="~/images/room_icons/img6.jpg" alt="Alternate Text" />
+			<img class="img10 img" src="~/images/room_icons/img10.jpg" alt="Alternate Text" />
+			<img class="img11 img" src="~/images/room_icons/img11.jpg" alt="Alternate Text" />
+			<img class="img12 img" src="~/images/room_icons/img12.jpg" alt="Alternate Text" />
+		</div>
+	</div>
+	<input id="imgField" style="display: none;" asp-for="Img" />
+
+	<button style="align-self: center; margin-top: 10px; padding: 2px; width: 100px;" type="submit">Применить изменения</button>
+
+</form>
+
+<script>
+	let images = document.getElementsByClassName('img');
+	let last = images[0];
+	let field = document.getElementById('imgField');
+	for (let i = 0; i < images.length; i++) {
+		images[i].onclick = () => {
+			last.style.borderColor = 'transparent';
+			images[i].style.borderColor = 'black';
+			field.value = images[i].classList[0];
+			last = images[i];
+		}
+	}
+</script>

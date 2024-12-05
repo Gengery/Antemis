@@ -1,0 +1,22 @@
+﻿@using Antemis.Models;
+
+@model UserModel
+@{
+	Layout = "_UserLayout";
+}
+
+<link rel="stylesheet" href="~/css/standart-style.css" />
+<link rel="stylesheet" href="~/css/user-pages/my-page-style.css" />
+
+<div class="standart-container m-container">
+	<img class="img-box" src="~/images/usericons/@(Model?.Img).png"/>
+	<p class="id-box">ID: @Model?.ID</p>
+	<p class="surname-box">Фамилия: @Model?.Surname</p>
+	<p class="name-box">Имя: @Model?.Name</p>
+	<p class="patronimic-box">Отчество: @Model?.Patronimic</p>
+	<p class="inn-data-box">ИНН: @Model?.INN</p>
+	<p class="birth-data-box">Дата рождения: @Model?.BirthDate</p>
+	<p class="gender-data-box">Пол: @(Model?.Gender == 'm' ? "Мужской" : "Женский")</p>
+</div>
+
+

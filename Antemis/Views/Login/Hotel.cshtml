@@ -1,0 +1,22 @@
+﻿@using Antemis.Models;
+
+@model HotelModel
+@{
+	Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/login-pages/login-style.css" />
+
+<form class="login-main-container" asp-controller="Login" asp-action="Hotel">
+	<span class="login-error" style="text-align: center; color: red;" asp-validation-for="HotelINN"></span>
+	<span class="pass-error" style="text-align: center; color: red;" asp-validation-for="Password"></span>
+
+	<p class="login-text">ИНН: </p>
+	<input class="login-input input-box" asp-for="HotelINN" />
+
+	<p class="pass-text">Пароль: </p>
+	<input class="pass-input input-box" asp-for="Password" />
+
+	<button class="submit" type="submit">Войти</button>
+</form>
+
