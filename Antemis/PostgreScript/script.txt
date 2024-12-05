@@ -1,0 +1,193 @@
+create table persons (
+	INN text not null primary key check(length(INN) = 12),
+	name text not null,
+	surname text,
+	patronimic text,
+	gender char not null,
+	birthDate date,
+	descryption text default('')
+);
+
+alter table persons
+	drop column descryption;
+
+create table users (
+	INN text not null unique references persons(INN) check(length(INN) = 12),
+	userLogin text not null,
+	userID serial not null primary key,
+	imageName text default('user_icon.png'),
+	userPassword text not null
+);
+
+create table hotels (
+	hotelID serial not null primary key,
+	hotelName text not null,
+	hotelINN text not null unique check(length(hotelINN) = 12),
+	hotelDirectorINN text not null references persons(INN) check(length(hotelDirectorINN) = 12),
+	hotelOwnerINN text not null references persons(INN) check(length(hotelOwnerINN) = 12),
+	hotelImage text default('hotel_icon.png'),
+	hotelPassword text not null
+);
+
+create table works (
+	workID integer not null primary key,
+	workName text not null unique
+);
+
+create table workers (
+	hotelID serial not null references hotels(hotelID),
+	INN text not null primary key references persons(INN) check(length(INN) = 12),
+	imageName text default('user_icon.png'),
+	workID integer not null check(workID < 100000) references works(workID)
+);
+
+create table rooms (
+	roomNumber integer not null,
+	hotelID integer not null references hotels(hotelID),
+	roomDescryprion text default('Информация не добавлена'),
+	placesAmount integer default(2),
+	priceForDay integer not null,
+	isAvaible bool default(true),
+	imageName text default('room_icon.png'),
+	constraint rooms_primary_key_check primary key(hotelID, roomNumber)
+);
+
+create table customers (
+	roomNumber integer not null,
+	hotelID integer not null references hotels(hotelID),
+	arrivalDate date not null default(current_date),
+	leavingDate date not null,
+	prepayment integer default(0),
+	customerINN text not null references persons(INN) check(length(customerINN) = 12),
+	constraint cust_to_rooms_ref foreign key(hotelID, roomNumber) references rooms(hotelID, roomNumber),
+	constraint cust_pr_key primary key(roomNumber, hotelID, arrivalDate)
+);
+
+insert into works
+	values (1, 'Персонал'),
+	(2, 'Администратор'),
+	(3, 'Кухня');
+	
+create index on rooms(priceForDay);
+create index on customers(arrivalDate, leavingDate);
+create index on customers(arrivalDate);
+create index on customers(leavingDate);
+
+create or replace function create_base_rooms(hid integer) returns void
+language sql
+as $$
+	Insert into rooms
+	Values (101, hid, 'Комната по умолчанию', 2, 10000, true, 'img1'),
+		(102, hid, 'Комната по умолчанию', 2, 10000, true, 'img1'),
+		(103, hid, 'Комната по умолчанию', 2, 10000, true, 'img1'),
+		(104, hid, 'Комната по умолчанию', 2, 10000, true, 'img1'),
+		(105, hid, 'Комната по умолчанию', 2, 10000, true, 'img1');
+$$;
+
+alter function create_base_rooms
+	rename to create_base_rooms_f;
+
+create or replace procedure create_base_rooms(hid integer)
+language sql
+as $$
+	Insert into rooms
+	Values (101, hid, 'Комната по умолчанию', 2, 10000, true, 'img1'),
+		(102, hid, 'Комната по умолчанию', 2, 10000, true, 'img1'),
+		(103, hid, 'Комната по умолчанию', 2, 10000, true, 'img1'),
+		(104, hid, 'Комната по умолчанию', 2, 10000, true, 'img1'),
+		(105, hid, 'Комната по умолчанию', 2, 10000, true, 'img1');
+$$;
+
+alter procedure create_base_rooms
+	rename to create_base_rooms_p;
+
+delete from rooms
+	where hotelid = 5;
+
+select create_base_rooms(5);
+
+call create_base_rooms_p(5);
+
+create trigger add_base_rooms_on_insert
+	after insert on hotels
+	for each row execute function create_base_rooms();
+
+create or replace function create_base_rooms()
+returns trigger
+as $$
+begin
+	insert into rooms
+	values (101, NEW.hotelid, 'Комната по умолчанию', 2, 10000, true, 'img1'),
+		(102, NEW.hotelid, 'Комната по умолчанию', 2, 10000, true, 'img1'),
+		(103, NEW.hotelid, 'Комната по умолчанию', 2, 10000, true, 'img1'),
+		(104, NEW.hotelid, 'Комната по умолчанию', 2, 10000, true, 'img1'),
+		(105, NEW.hotelid, 'Комната по умолчанию', 2, 10000, true, 'img1');
+	return null;
+end
+$$ language plpgsql;
+
+create or replace function workers_create() returns trigger
+language plpgsql
+as
+$$
+begin
+	insert into workers
+	values (new.hotelid, new.hotelownerinn, 'img1', 5),
+		(new.hotelid, new.hoteldirectorinn, 'img1', 4);
+	return null;
+end;
+$$;
+
+create trigger add_dir_and_own
+	after insert on hotels
+	for each row execute function workers_create();
+
+drop function create_base_rooms_f;
+drop procedure create_base_rooms_p;
+
+select * from rooms;
+
+create view users_list_view as
+	select userid, userlogin, fullname, hotelid, workname from
+		(select userid, userlogin, fullname, hotelid, workid from
+			(select userid, inn, userlogin, surname || ' ' || name || ' ' || patronimic as fullname from
+				(select u.userid, u.inn, u.userlogin, p.surname, p.name, p.patronimic from users u
+				left join persons p on u.inn = p.inn)) as us
+					left join workers w on w.inn = us.inn) as k
+						left join works as ww on ww.workid = k.workid;
+		
+drop view users_list_view;
+
+select * from users_list_view;
+
+
+-------------------------------------------
+
+---Список всех рабочих
+create view v_all_workers as
+	select surname || ' ' || name || ' ' || patronimic as fullname, inn, job from
+	(select surname, name, patronimic, inn, workname as job from
+	(select surname, name, patronimic, wks.inn, workid from workers wks
+	left join persons pers on wks.inn = pers.inn) as inf
+	left join works w on w.workid = inf.workid);
+
+select * from v_all_workers;
+
+---Количество рабочих каждого типа
+create view v_workers_amo as
+select workname, count(*) from workers w
+	right join works ws on ws.workid = w.workid
+	group by ws.workid
+	order by count;
+
+select * from v_workers_amo;
+
+---Список отелей где больше 3 комнат
+create view v_good_hotels as
+	(select hotelname, amo from
+	(select hotelid, count(*) as amo from rooms
+		group by hotelid
+		having count(hotelid) > 3) as hs
+		left join hotels hots on hs.hotelid = hots.hotelid);
+
+select * from v_good_hotels;
